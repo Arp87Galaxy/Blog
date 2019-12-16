@@ -1,0 +1,1 @@
+document.getElementsByTagName("notice").style.color=red;

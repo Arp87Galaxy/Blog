@@ -1,0 +1,29 @@
+.bc-white{
+    background-color: #FFFFFF !important;
+}
+.bc-black{
+    background-color: #000000 !important;
+}
+.bc-red{
+    background-color: red !important;
+}
+.bc-gray{
+    background-color: #DCDCDC !important;
+}
+.white{
+    color: white !important;
+}
+.black{
+    color: black !important;
+}
+.gray{
+    color: gray !important;
+}
+
+.border-color{
+    border-color: #0f0f0f !important;
+}
+
+.bc-rbga0{
+
+}

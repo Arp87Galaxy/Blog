@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta class="name">
+    <link href="images/favicon.ico" rel="icon" type="image/x-ico">
+    <title>Blog首页</title>
+    <link href="./images/favicon.ico" rel="icon" type="image/x-ico">
+
+    <link href="css/me.css" rel="stylesheet" >
+    <link href="css/commons/animation.css" rel="stylesheet" >
+
+    <link href="css/commons/color.css" rel="stylesheet" >
+    <link href="css/commons/size.css" rel="stylesheet" >
+    <link href="editormd/css/editormd.css" rel="stylesheet" >
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+<!--导航栏-->
+<header th:insert="~{commons/header :: header}"></header>
+<!--中间部分-->
+<div id="test-markdown-view" class="size-padding-lr"  >
+<!--[[${articleText}]]-->
+    <!--<textarea style="display:none;" ></textarea>-->
+</div>
+
+<!--底部-->
+<!--<footer class="modal-footer size-padding-none boder-min  ">-->
+    <!--<div class="container-fluid navbar-inverse text-center size-padding-lr ">-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-4 center-block white">-->
+                <!--<div class="container-fluid">-->
+                    <!--<div class="row"></div>-->
+                    <!--<img src="./images/jpg/QRcode.jpg" alt="" class="img-responsive img-circle">-->
+
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="col-md-4">-->
+                <!--ssssss-->
+            <!--</div>-->
+            <!--<div class="col-md-4">-->
+                <!--sdasd as as das da as das-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+<!--</footer>-->
+<script src="jquery/dist/jquery.js"></script>
+<script src="bootstrap-3.3.7/dist/js/bootstrap.js" ></script>
+<!--&lt;!&ndash;如果不用则找不到marked不能正常解析&ndash;&gt;-->
+<script src="editormd/lib/marked.min.js"></script>
+<script src="editormd/editormd.js"></script>
+
+
+<!--&lt;!&ndash;以下是editmd可以不用的js&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="editormd/lib/prettify.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="editormd/lib/raphael.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="editormd/lib/underscore.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="editormd/lib/sequence-diagram.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;<script src="editormd/lib/flowchart.min.js"></script>&ndash;&gt;-->
+<!--<script src="editormd/lib/jquery.flowchart.min.js"></script>-->
+<script type="text/javascript" th:inline="javascript">
+        // $.ajax({
+        //     url:"readtext",
+        //     type:"POST",
+        //     data:{
+        //         articleTitle:$("#articleTitle").val()
+        //     },
+        //     success:function(result){
+        //         alert("ok!!!");
+                var testView = editormd.markdownToHTML("test-markdown-view", {
+                    markdown : [[${articleText}]]// Also, you can dynamic set Markdown text
+                    // htmlDecode : true,  // Enable / disable HTML tag encode.
+                    // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+                });
+        //     }});
+</script>
+</body>
+</html>

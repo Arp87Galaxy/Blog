@@ -1,0 +1,58 @@
+.szie-full{
+    width: 100%;
+    height: 100%;
+}
+.size-width{
+    width: 100%;
+}
+
+
+.size-height-max{
+    height: 100% !important;
+}
+.size-height-min{
+    height: 10% !important;
+}
+.size-height-mid{
+    height: 20% !important;
+}
+
+
+
+
+.size-padding-lr{
+    padding-left:10% !important;
+    padding-right:10% !important;
+}
+.size-margin{
+    margin: 14px 14px 14px 14px !important;
+}
+.size-margin-null{
+    margin: 0 0 0 0 !important;
+}
+.size-margin-t{
+    margin-top: 0px !important;
+}
+.size-margin-lr{
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+.size-margin-tb{
+    margin-top: 10px!important;
+    margin-bottom: 10px !important;
+}
+.size-margin-none{
+    margin: 0px 0px !important;
+}
+.size-padding-none{
+    padding: 0px 0px 0px 0px !important;
+}
+
+.boder-min{
+    border: 0px !important;
+}
+
+
+.my-line-height{
+    line-height: 5px;
+}

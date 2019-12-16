@@ -1,0 +1,14 @@
+#animation-move{
+    position:relative;
+    color:black;
+    animation: mykeyframe 2s infinite;
+    -webkit-animation: mykeyframe linear 15s infinite;
+}
+@keyframes mykeyframe {
+    0% {left: 0px}
+    100% {left: 60%}
+}
+@-webkit-keyframes mykeyframe {
+    0% {left: 0px;}
+    100% {left: 60%}
+}

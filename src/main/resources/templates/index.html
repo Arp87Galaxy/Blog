@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bolg首页</title>
+    <link href="./images/favicon.ico" rel="icon" type="image/x-ico">
+
+    <link href="css/me.css" rel="stylesheet" >
+    <link href="css/commons/animation.css" rel="stylesheet" >
+
+    <link href="css/commons/color.css" rel="stylesheet" >
+    <link href="css/commons/size.css" rel="stylesheet" >
+    <link href="editormd/css/editormd.css" rel="stylesheet" >
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body id="mycanvas">
+<div class="mycontainer">
+<header th:insert="~{commons/header :: header}"></header>
+<!--中间部分-->
+<!--    公告-->
+<!--    推荐展示-->
+<div class="container-fluid  size-padding-none size-margin-lr size-margin ">
+    <div class="row">
+        <div id="ArticlePanal" class="col-md-8 bc-rgba0 size-padding-none" >
+
+        </div>
+        <div class="col-md-4 bc-rgba0 size-padding-none">
+            <div class="container-fluid  my-cut-line size-margin bc-white">
+                    <h3 >分类</h3>
+                    <a href="#" class="my-display">java</a>
+                    <a href="#" class="my-display">c</a>
+                    <a href="#" class="my-display">c++</a>
+                    <a href="#" class="my-display">python</a>
+            </div>
+            <div class="container-fluid  my-cut-line size-margin bc-white">
+                <h3>热门标签</h3>
+                <a href="#" class="my-display">数据结构</a>
+                <a href="#" class="my-display">操作系统</a>
+                <a href="#" class="my-display">计算机组成原理</a>
+                <a href="#" class="my-display">计算机网络</a>
+            </div>
+            <div class="container-fluid  my-cut-line size-margin bc-white">
+                <h3>最近更新</h3>
+                <a href="#" class="my-display">大数据</a>
+                <a href="#" class="my-display">人工智能</a>
+                <a href="#" class="my-display">数据挖掘</a>
+                <a href="#" class="my-display">数据清洗</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--    底部-->
+<footer class="modal-footer size-padding-none boder-min  ">
+    <div class="container-fluid navbar-inverse text-center size-padding-lr ">
+        <div class="row">
+            <div class="col-md-4 center-block white">
+                <div class="container-fluid">
+                    <div class="row"></div>
+                    <img src="./images/jpg/QRcode.jpg" alt="" class="img-responsive img-circle">
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+ssssss
+            </div>
+            <div class="col-md-4">
+sdasd as as das da as das
+            </div>
+        </div>
+    </div>
+
+</footer>
+</div>
+<script src="js/starts.js"></script>
+<script src="jquery/dist/jquery.min.js"></script>
+<script src="bootstrap-3.3.7/dist/js/bootstrap.js" ></script>
+<script src="editormd/editormd.js"></script>
+<script type="text/javascript">
+    <!--页面加载时执行-->
+    $("#toindex")[0].style.backgroundColor="black";
+    $("#toindex")[0].style.color="white";
+    $.ajax({
+        url:"/getDefultArticleList",
+        type:"POST",
+        success:function (result) {
+            var i = 0;
+            result.forEach(function (value){
+                if(i>10)
+                    return;
+                var article = $("<article class=\"my-cut-line size-margin-null bc-white\"></article>");
+
+                var header = $("<header></header>");
+                var div = $("<div class='container-fluid '></div>");
+                var footer = $("<footer></footer>");
+
+
+                var headerchild = $(" <div class=\"container-fluid size-margin\">\n" +
+                    "                        <h4 class=\"entry-title\"><a id='toArticleWithPath' rel=\"bookmark\">"+value.articleTitle+"</a></h4>\n" +
+                    "                        分类:<span class=\"size-margin\">1245645</span>\n" +
+                    "                        标签:<span class=\"size-margin\">123154654</span>\n" +
+                    "                    </div>");
+
+                var divchild = $("<div class=\"row\">\n" +
+                    "                        <div class=\"col-md-4\">\n" +
+                    "                            <img src=\"./images/jpg/QRcode.jpg\" alt=\"\" class=\"img-responsive img-rounded\">\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"col-md-8\">\n" +
+                    "                            <p>\n" +
+                    value.articleOverview+
+                    "                            </p>\n" +
+                    "                        </div>\n" +
+                    "                    </div>")
+                var footerchild = $("<div class=\"container-fluid\">\n" +
+                    "                        <p class=\"glyphicon glyphicon-user size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "                        <p class=\"glyphicon glyphicon-heart size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "                        <p class=\"glyphicon glyphicon-heart-empty size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "                        <p class=\"glyphicon glyphicon-time size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "\n" +
+                    "                        <p class=\"glyphicon glyphicon-eye-open size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "                        <p class=\"glyphicon glyphicon-share size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "                        <p class=\"glyphicon glyphicon-comment size-margin\">\n" +
+                    "                            11111\n" +
+                    "                        </p>\n" +
+                    "\n" +
+                    "                    </div>");
+                header.append(headerchild);
+                div.append(divchild);
+                footer.append(footerchild);
+
+                article.append(header);
+                article.append(div);
+                article.append(footer);
+
+                $("#ArticlePanal").append(article);
+                i++;
+            });
+        }
+    })
+
+
+    <!--点击事件-->
+    $(document).on("click","#toArticleWithPath",function () {
+        window.location.href="readtext?articleTitle="+$(this).text();
+    })
+</script>
+</body>
+</html>

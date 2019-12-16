@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta class="name">
+    <link href="images/favicon.ico" rel="icon" type="image/x-ico">
+    <title>Blog首页</title>
+    <link href="./images/favicon.ico" rel="icon" type="image/x-ico">
+
+    <link href="css/me.css" rel="stylesheet" >
+    <link href="css/commons/animation.css" rel="stylesheet" >
+
+    <link href="css/commons/color.css" rel="stylesheet" >
+    <link href="css/commons/size.css" rel="stylesheet" >
+    <link href="editormd/css/editormd.css" rel="stylesheet" >
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<!--导航栏-->
+<header th:insert="~{commons/header :: header}"></header>
+
+<!--中间部分-->
+<div id="test-markdown-view"  >
+    <!-- Server-side output Markdown text -->
+    <!--<textarea style="display:none;" ></textarea>-->
+</div>
+
+<div class="container">
+    <input id="articleTitle" type="text" class="form-control pull-right" placeholder="输入文章标题">
+</div>
+<div class="container">
+    <button id="clear" class="btn btn-default pull-left" >清空显示区</button>
+    <button id="release"class="btn btn-default pull-right" >发布文章</button>
+</div>
+<div id="test-editor">
+    <textarea style="display:none;"></textarea>
+</div>
+
+<!--    </div>-->
+<!--</div>-->
+
+<!--底部-->
+<footer class="modal-footer size-padding-none boder-min  ">
+    <div class="container-fluid navbar-inverse text-center size-padding-lr ">
+        <div class="row">
+            <div class="col-md-4 center-block white">
+                <div class="container-fluid">
+                    <div class="row"></div>
+                    <img src="./images/jpg/QRcode.jpg" alt="" class="img-responsive img-circle">
+
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                ssssss
+            </div>
+            <div class="col-md-4">
+                sdasd as as das da as das
+            </div>
+        </div>
+    </div>
+
+</footer>
+<script src="jquery/dist/jquery.js"></script>
+<script src="bootstrap-3.3.7/dist/js/bootstrap.js" ></script>
+<script src="editormd/editormd.js"></script>
+<script type="text/javascript">
+        $("#tomarkdown")[0].style.backgroundColor="black";
+        $("#tomarkdown")[0].style.color="white";
+        $("#clear").click(function () {
+           $("#test-markdown-view").empty();
+        });
+        $("#release").click(function () {
+            $.ajax({
+                url:"savetext",
+                type:"POST",
+                data:{
+                    textarea:$("#test-editor").children("textarea").val(),
+                    articleTitle:$("#articleTitle").val()
+                },
+                success:function(result){
+                    var testView = editormd.markdownToHTML("test-markdown-view", {
+                        markdown : result, // Also, you can dynamic set Markdown text
+                        // htmlDecode : true,  // Enable / disable HTML tag encode.
+                        // htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+                    });
+                }});
+        })
+
+        var editor = editormd("test-editor", {
+            // width  : "100%",
+            // height : "100%",
+            markdown: "#MarkDown是最方便的语法之一",
+            path   : "editormd/lib/"
+        });
+
+
+
+</script>
+</body>
+</html>
